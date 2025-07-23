@@ -121,6 +121,22 @@
         color: #d15a43;
       }
 
+      .icon {
+        width: 24px;
+        height: 24px;
+        margin: 0 8px;
+        fill: currentColor;
+        filter: grayscale(100%);
+        transition: filter 0.2s ease, transform 0.2s ease;
+        vertical-align: middle;
+      }
+
+      .social-icons a:hover .icon {
+        filter: grayscale(0%);
+        transform: scale(1.1);
+      }
+
+
       .cv-button {
         display: inline-block;
         margin-top: 1rem;
@@ -172,13 +188,26 @@
         <img src="profile.png" alt="Rimjhim Tomar" class="profile-img" />
   
         <div class="social-icons">
-          <a href="https://www.linkedin.com/in/rimjhimtomar/" target="_blank">🔗</a>
-          <a href="https://scholar.google.com/citations?user=EQdE0Y4AAAAJ&hl=en" target="_blank">📚</a>
-          <a href="https://instagram.com/thatlosttimelady" target="_blank">📷</a>
-          <a href="mailto:rimjhimtomar@protonmail.ch">✉️</a>
-          <a href="https://orcid.org/0000-0003-1528-976X" target="_blank">🧬</a>
-          <a href="https://bsky.app/profile/rimjhim.bsky.social" target="_blank">🌐</a>
+          <a href="https://www.linkedin.com/in/rimjhimtomar/" target="_blank" aria-label="LinkedIn">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" alt="LinkedIn" class="icon" />
+          </a>
+          <a href="https://scholar.google.com/citations?user=EQdE0Y4AAAAJ&hl=en" target="_blank" aria-label="Google Scholar">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlescholar.svg" alt="Google Scholar" class="icon" />
+          </a>
+          <a href="https://instagram.com/thatlosttimelady" target="_blank" aria-label="Instagram">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg" alt="Instagram" class="icon" />
+          </a>
+          <a href="mailto:rimjhimtomar@protonmail.ch" aria-label="Email">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/protonmail.svg" alt="Email" class="icon" />
+          </a>
+          <a href="https://orcid.org/0000-0003-1528-976X" target="_blank" aria-label="ORCID">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/orcid.svg" alt="ORCID" class="icon" />
+          </a>
+          <a href="https://bsky.app/profile/rimjhim.bsky.social" target="_blank" aria-label="Bluesky">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bluesky.svg" alt="Bluesky" class="icon" />
+          </a>
         </div>
+        
       </div>
   
       <!-- Right Column: About Me + CV -->
