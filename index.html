@@ -9,9 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
-      * {
+      html, body {
         background-color: #ffffff;
       }
+
       
       body {
         font-family: 'Lato', sans-serif;
@@ -76,6 +77,80 @@
         font-size: 0.9rem;
         color: #777;
       }
+
+      .intro {
+        margin-top: 2rem;
+        padding: 3rem 1rem;
+        background-color: #ffffff;
+      }
+
+      .intro-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .intro-left, .intro-right {
+        flex: 1 1 400px;
+        text-align: center;
+      }
+
+      .profile-img {
+        max-width: 200px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+      }
+
+      .social-icons {
+        margin-top: 1rem;
+      }
+
+      .social-icons a {
+        font-size: 1.4rem;
+        margin: 0 0.5rem;
+        text-decoration: none;
+        color: #4b6584;
+        transition: color 0.2s ease;
+      }
+
+      .social-icons a:hover {
+        color: #d15a43;
+      }
+
+      .cv-button {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.6rem 1.2rem;
+        background-color: transparent;
+        border: 2px solid #d15a43;
+        color: #d15a43;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .cv-button:hover {
+        background-color: #d15a43;
+        color: #fff;
+      }
+
+      @media (max-width: 768px) {
+        .intro-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .intro-left, .intro-right {
+          flex: 1 1 100%;
+        }
+      }
+
+
     </style>
   </head>  
 <body>
@@ -88,6 +163,35 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
+
+  <section class="intro">
+    <div class="intro-container">
+      
+      <!-- Left Column: Photo + Icons -->
+      <div class="intro-left">
+        <img src="profile.png" alt="Rimjhim Tomar" class="profile-img" />
+  
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/rimjhimtomar/" target="_blank">🔗</a>
+          <a href="https://scholar.google.com/citations?user=EQdE0Y4AAAAJ&hl=en" target="_blank">📚</a>
+          <a href="https://instagram.com/thatlosttimelady" target="_blank">📷</a>
+          <a href="mailto:rimjhimtomar@protonmail.ch">✉️</a>
+          <a href="https://orcid.org/0000-0003-1528-976X" target="_blank">🧬</a>
+          <a href="https://bsky.app/profile/rimjhim.bsky.social" target="_blank">🌐</a>
+        </div>
+      </div>
+  
+      <!-- Right Column: About Me + CV -->
+      <div class="intro-right">
+        <h2>About Me</h2>
+        <p>
+          I'm a computational neuroscientist studying how neural circuits learn and adapt in dynamic environments. My work blends machine learning, theoretical neuroscience, and reinforcement learning to understand learning rules in recurrent networks.
+        </p>
+        <a class="cv-button" href="CV.pdf" target="_blank">Download CV</a>
+      </div>
+  
+    </div>
+  </section>
 
   <div class="container">
     <section id="research">
