@@ -1,206 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Rimjhim Tomar | Computational Neuroscience</title>
-    <meta name="description" content="Rimjhim Tomar is a postdoctoral researcher in computational neuroscience at Mount Sinai, studying biologically plausible learning rules in recurrent neural networks.">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rimjhim Tomar | Computational Neuroscience</title>
+  <meta name="description" content="Rimjhim Tomar is a postdoctoral researcher in computational neuroscience at Mount Sinai, studying biologically plausible learning rules in recurrent neural networks.">
 
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <style>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
-      /* Hide default cursor */
-      body {
-        cursor: none;
-      }
+  <style>
+    html, body {
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
 
-      /* Custom cursor style */
-      #cursor {
-        position: fixed;
-        width: 20px;
-        height: 20px;
-        background: rgba(209, 90, 67, 0.6); /* your coral accent color */
-        border-radius: 50%;
-        pointer-events: none;
-        transform: translate(-50%, -50%);
-        transition: transform 0.1s ease-out;
-      }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #ffffff;
+      color: #1e3a5f;
+      line-height: 1.6;
+    }
 
-      html, body {
-        background-color: #ffffff;
-      }
+    h1, h2, h3, nav, footer {
+      font-family: 'Lato', sans-serif;
+    }
 
-      
-      body {
-        font-family: 'Lato', sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #ffffff;
-        color: #1e3a5f;
-        line-height: 1.6;
-      }
-  
-      h1, h2, h3, nav, footer {
-        font-family: 'Lato', sans-serif;
-      }
-  
-      header {
-        background: #ffffff;
-        color: #1e3a5f;
-        padding: 2rem 1rem;
-        text-align: center;
-        border-bottom: 1px solid #e0e0e0;
-      }
-  
-      header h1 {
-        margin: 0;
-        font-size: 2.5rem;
-        color: #1e3a5f; /* dark blue for name */
-        letter-spacing: 1px;
-      }
-  
-      nav a {
-        color: #4b6584; /* muted steel blue */
-        margin: 0 1rem;
-        text-decoration: none;
-        font-weight: 400;
-        letter-spacing: 0.5px;
-        transition: color 0.2s ease-in-out;
-      }
-  
-      nav a:hover {
-        color: #d15a43; /* rust/coral accent on hover */
-      }
-  
-      .container {
-        max-width: 800px;
-        margin: 2rem auto;
-        padding: 0 1rem;
-      }
-  
-      section {
-        margin-bottom: 3rem;
-      }
-  
-      h2 {
-        color: #1e3a5f;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 0.5rem;
-      }
-  
-      footer {
-        text-align: center;
-        padding: 1rem;
-        font-size: 0.9rem;
-        color: #777;
-      }
+    header {
+      background: #ffffff;
+      color: #1e3a5f;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+      position: relative;
+      z-index: 2;
+    }
 
-      .intro {
-        margin-top: 2rem;
-        padding: 3rem 1rem;
-        background-color: #ffffff;
-      }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #1e3a5f;
+      letter-spacing: 1px;
+    }
 
+    nav a {
+      color: #4b6584;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      transition: color 0.2s ease-in-out;
+    }
+
+    nav a:hover {
+      color: #d15a43;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      color: #1e3a5f;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    .intro {
+      margin-top: 2rem;
+      padding: 3rem 1rem;
+      background-color: #ffffff;
+      position: relative;
+      z-index: 2;
+    }
+
+    .intro-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .intro-left, .intro-right {
+      flex: 1 1 400px;
+      text-align: center;
+    }
+
+    .intro-right a {
+      color: #d15a43;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .intro-right a:hover {
+      text-decoration: underline;
+    }
+
+    .profile-img {
+      max-width: 200px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .social-icons {
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      font-size: 1.4rem;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      color: #4b6584;
+      transition: color 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      color: #d15a43;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      margin: 0 8px;
+      fill: currentColor;
+      filter: grayscale(100%);
+      transition: filter 0.2s ease, transform 0.2s ease;
+      vertical-align: middle;
+    }
+
+    .social-icons a:hover .icon {
+      filter: grayscale(0%);
+      transform: scale(1.1);
+    }
+
+    .cv-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: transparent;
+      border: 2px solid #d15a43;
+      color: #d15a43;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .cv-button:hover {
+      background-color: #d15a43;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
       .intro-container {
-        max-width: 1000px;
-        margin: 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+        text-align: center;
       }
 
       .intro-left, .intro-right {
-        flex: 1 1 400px;
-        text-align: center;
+        flex: 1 1 100%;
       }
+    }
 
-      .intro-right a {
-        color: #d15a43;
-        text-decoration: none;
-        font-weight: 500;
-      }
-
-      .intro-right a:hover {
-        text-decoration: underline;
-      }
-
-
-      .profile-img {
-        max-width: 200px;
-        border-radius: 50%;
-        margin-bottom: 1rem;
-      }
-
-      .social-icons {
-        margin-top: 1rem;
-      }
-
-      .social-icons a {
-        font-size: 1.4rem;
-        margin: 0 0.5rem;
-        text-decoration: none;
-        color: #4b6584;
-        transition: color 0.2s ease;
-      }
-
-      .social-icons a:hover {
-        color: #d15a43;
-      }
-
-      .icon {
-        width: 24px;
-        height: 24px;
-        margin: 0 8px;
-        fill: currentColor;
-        filter: grayscale(100%);
-        transition: filter 0.2s ease, transform 0.2s ease;
-        vertical-align: middle;
-      }
-
-      .social-icons a:hover .icon {
-        filter: grayscale(0%);
-        transform: scale(1.1);
-      }
-
-
-      .cv-button {
-        display: inline-block;
-        margin-top: 1rem;
-        padding: 0.6rem 1.2rem;
-        background-color: transparent;
-        border: 2px solid #d15a43;
-        color: #d15a43;
-        text-decoration: none;
-        border-radius: 4px;
-        font-weight: 500;
-        transition: all 0.2s ease;
-      }
-
-      .cv-button:hover {
-        background-color: #d15a43;
-        color: #fff;
-      }
-
-      @media (max-width: 768px) {
-        .intro-container {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .intro-left, .intro-right {
-          flex: 1 1 100%;
-        }
-      }
-
-
-    </style>
-  </head>  
+    /* Canvas cursor trail is drawn below everything else */
+    #trail-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
+</head>
 <body>
+  <canvas id="trail-canvas"></canvas>
+
   <header>
     <h1>Rimjhim Tomar</h1>
     <p>Computational Neuroscience | Mount Sinai</p>
@@ -214,11 +205,8 @@
 
   <section class="intro">
     <div class="intro-container">
-      
-      <!-- Left Column: Photo + Icons -->
       <div class="intro-left">
         <img src="profile.png" alt="Rimjhim Tomar" class="profile-img" />
-  
         <div class="social-icons">
           <a href="https://www.linkedin.com/in/rimjhimtomar/" target="_blank" aria-label="LinkedIn">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" alt="LinkedIn" class="icon" />
@@ -239,10 +227,7 @@
             <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bluesky.svg" alt="Bluesky" class="icon" />
           </a>
         </div>
-        
       </div>
-  
-      <!-- Right Column: About Me + CV -->
       <div class="intro-right">
         <h2>About Me</h2>
         <p>
@@ -250,10 +235,8 @@
           <a href="https://www.schafferlab.com/" target="_blank">Schaffer Lab</a> 
           at the Icahn School of Medicine at Mount Sinai. My research focuses on understanding how neural circuits learn and adapt in complex, dynamic settings. I combine machine learning, theoretical neuroscience, and reinforcement learning principles to investigate biologically plausible learning rules in recurrent networks.
         </p>
-        
         <a class="cv-button" href="CV.pdf" target="_blank">Download CV</a>
       </div>
-  
     </div>
   </section>
 
@@ -261,14 +244,57 @@
     &copy; 2025 Rimjhim Tomar. All rights reserved.
   </footer>
 
-<div id="cursor"></div>
+  <script>
+    (function(){
+      const fine = matchMedia('(pointer:fine)').matches && matchMedia('(hover:hover)').matches;
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!fine || reduce) return;
 
-<script>
-  const cursor = document.getElementById('cursor');
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
-</script>
+      const canvas = document.getElementById('trail-canvas');
+      const ctx = canvas.getContext('2d');
+      let w, h;
+      function resize() {
+        w = canvas.width = innerWidth;
+        h = canvas.height = innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      const points = [];
+      const maxPoints = 20; // length of trail
+      const ease = 0.25;
+
+      let mouseX = w / 2;
+      let mouseY = h / 2;
+
+      window.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      }, { passive: true });
+
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+
+        points.unshift({ x: mouseX, y: mouseY });
+        if (points.length > maxPoints) points.pop();
+
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = 'rgba(209, 90, 67, 0.35)';
+        ctx.lineWidth = 6;
+
+        ctx.beginPath();
+        for (let i = 0; i < points.length; i++) {
+          const p = points[i];
+          if (i === 0) ctx.moveTo(p.x, p.y);
+          else ctx.lineTo(p.x, p.y);
+        }
+        ctx.stroke();
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+  </script>
 </body>
 </html>
