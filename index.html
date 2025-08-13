@@ -1,323 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rimjhim Tomar | Computational Neuroscience</title>
-  <meta name="description" content="Rimjhim Tomar is a postdoctoral researcher in computational neuroscience at Mount Sinai, studying biologically plausible learning rules in recurrent neural networks.">
+<canvas id="trail-canvas"></canvas>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  #trail-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999; /* sits over all content */
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #trail-canvas { display: none !important; }
+  }
+</style>
 
-  <style>
-    html, body {
-      background-color: #ffffff;
-      margin: 0;
-      padding: 0;
+<script>
+(function () {
+  const fine = matchMedia('(pointer:fine)').matches && matchMedia('(hover:hover)').matches;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!fine || reduce) return;
+
+  const canvas = document.getElementById('trail-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, DPR;
+
+  function resize() {
+    DPR = window.devicePixelRatio || 1;
+    W = canvas.width = innerWidth * DPR;
+    H = canvas.height = innerHeight * DPR;
+    canvas.style.width = innerWidth + 'px';
+    canvas.style.height = innerHeight + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+  addEventListener('resize', resize);
+  resize();
+
+  const tailCount = 20; // number of chasing stars
+  const stars = [];
+  let mouseX = innerWidth / 2, mouseY = innerHeight / 2;
+
+  for (let i = 0; i < tailCount; i++) {
+    stars.push({
+      x: mouseX,
+      y: mouseY,
+      size: 3,
+      opacity: 1
+    });
+  }
+
+  addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  }, { passive: true });
+
+  function animate() {
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+    // Move each star toward the one ahead of it
+    stars[0].x += (mouseX - stars[0].x) * 0.25;
+    stars[0].y += (mouseY - stars[0].y) * 0.25;
+
+    for (let i = 1; i < tailCount; i++) {
+      stars[i].x += (stars[i - 1].x - stars[i].x) * 0.25;
+      stars[i].y += (stars[i - 1].y - stars[i].y) * 0.25;
     }
 
-    body {
-      font-family: 'Lato', sans-serif;
-      background: #ffffff;
-      color: #1e3a5f;
-      line-height: 1.6;
+    // Draw stars
+    for (let i = 0; i < tailCount; i++) {
+      const p = stars[i];
+      const alpha = 1 - i / tailCount; // fade along the tail
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(209, 90, 67, ${alpha})`; // coral
+      ctx.fill();
     }
 
-    h1, h2, h3, nav, footer { font-family: 'Lato', sans-serif; }
-
-    header {
-      background: #ffffff;
-      color: #1e3a5f;
-      padding: 2rem 1rem;
-      text-align: center;
-      border-bottom: 1px solid #e0e0e0;
-      position: relative;
-      z-index: 2;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #1e3a5f;
-      letter-spacing: 1px;
-    }
-
-    nav a {
-      color: #4b6584;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: 400;
-      letter-spacing: 0.5px;
-      transition: color 0.2s ease-in-out;
-    }
-    nav a:hover { color: #d15a43; }
-
-    .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-    section { margin-bottom: 3rem; }
-    h2 { color: #1e3a5f; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem; }
-
-    footer { text-align: center; padding: 1rem; font-size: 0.9rem; color: #777; }
-
-    .intro { margin-top: 2rem; padding: 3rem 1rem; background-color: #ffffff; position: relative; z-index: 2; }
-    .intro-container {
-      max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem;
-      align-items: center; justify-content: space-between;
-    }
-    .intro-left, .intro-right { flex: 1 1 400px; text-align: center; }
-
-    .intro-right a { color: #d15a43; text-decoration: none; font-weight: 500; }
-    .intro-right a:hover { text-decoration: underline; }
-
-    .profile-img { max-width: 200px; border-radius: 50%; margin-bottom: 1rem; }
-
-    .social-icons { margin-top: 1rem; }
-    .social-icons a {
-      font-size: 1.4rem; margin: 0 0.5rem; text-decoration: none; color: #4b6584; transition: color 0.2s ease;
-    }
-    .social-icons a:hover { color: #d15a43; }
-
-    .icon {
-      width: 24px; height: 24px; margin: 0 8px; fill: currentColor;
-      filter: grayscale(100%); transition: filter 0.2s ease, transform 0.2s ease; vertical-align: middle;
-    }
-    .social-icons a:hover .icon { filter: grayscale(0%); transform: scale(1.1); }
-
-    .cv-button {
-      display: inline-block; margin-top: 1rem; padding: 0.6rem 1.2rem; background: transparent;
-      border: 2px solid #d15a43; color: #d15a43; text-decoration: none; border-radius: 4px;
-      font-weight: 500; transition: all 0.2s ease;
-    }
-    .cv-button:hover { background-color: #d15a43; color: #fff; }
-
-    @media (max-width: 768px) {
-      .intro-container { flex-direction: column; text-align: center; }
-      .intro-left, .intro-right { flex: 1 1 100%; }
-    }
-
-    /* Glitter trail canvas sits under content but above background */
-    #trail-canvas {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 9999;
-    }
-
-    /* Respect users who don’t want motion */
-    @media (prefers-reduced-motion: reduce) {
-      #trail-canvas { display: none !important; }
-    }
-  </style>
-</head>
-<body>
-  <canvas id="trail-canvas"></canvas>
-
-  <header>
-    <h1>Rimjhim Tomar</h1>
-    <p>Computational Neuroscience | Mount Sinai</p>
-    <nav>
-      <a href="research.html">Research</a>
-      <a href="publications.html">Publications</a>
-      <a href="misc.html">Misc</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <section class="intro">
-    <div class="intro-container">
-      <div class="intro-left">
-        <img src="profile.png" alt="Rimjhim Tomar" class="profile-img" />
-        <div class="social-icons">
-          <a href="https://www.linkedin.com/in/rimjhimtomar/" target="_blank" aria-label="LinkedIn">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" alt="LinkedIn" class="icon" />
-          </a>
-          <a href="https://scholar.google.com/citations?user=EQdE0Y4AAAAJ&hl=en" target="_blank" aria-label="Google Scholar">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlescholar.svg" alt="Google Scholar" class="icon" />
-          </a>
-          <a href="https://instagram.com/thatlosttimelady" target="_blank" aria-label="Instagram">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg" alt="Instagram" class="icon" />
-          </a>
-          <a href="mailto:rimjhimtomar@protonmail.ch" aria-label="Email">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/protonmail.svg" alt="Email" class="icon" />
-          </a>
-          <a href="https://orcid.org/0000-0003-1528-976X" target="_blank" aria-label="ORCID">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/orcid.svg" alt="ORCID" class="icon" />
-          </a>
-          <a href="https://bsky.app/profile/rimjhim.bsky.social" target="_blank" aria-label="Bluesky">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bluesky.svg" alt="Bluesky" class="icon" />
-          </a>
-        </div>
-      </div>
-      <div class="intro-right">
-        <h2>About Me</h2>
-        <p>
-          I’m a postdoctoral researcher in the 
-          <a href="https://www.schafferlab.com/" target="_blank">Schaffer Lab</a>
-          at the Icahn School of Medicine at Mount Sinai. My research focuses on understanding how neural circuits learn and adapt in complex, dynamic settings. I combine machine learning, theoretical neuroscience, and reinforcement learning principles to investigate biologically plausible learning rules in recurrent networks.
-        </p>
-        <a class="cv-button" href="CV.pdf" target="_blank">Download CV</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 Rimjhim Tomar. All rights reserved.
-  </footer>
-
-  <script>
-    (function () {
-      // Only run for fine pointers and if motion is allowed
-      const fine = matchMedia('(pointer:fine)').matches && matchMedia('(hover:hover)').matches;
-      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!fine || reduce) return;
-
-      const canvas = document.getElementById('trail-canvas');
-      const ctx = canvas.getContext('2d', { alpha: true });
-
-      // High-DPI backing store
-      let DPR = Math.min(window.devicePixelRatio || 1, 2);
-      let W = 0, H = 0;
-      function resize() {
-        DPR = Math.min(window.devicePixelRatio || 1, 2);
-        W = canvas.width = Math.floor(innerWidth * DPR);
-        H = canvas.height = Math.floor(innerHeight * DPR);
-        canvas.style.width = innerWidth + 'px';
-        canvas.style.height = innerHeight + 'px';
-        ctx.setTransform(DPR, 0, 0, DPR, 0, 0); // draw in CSS pixels
-      }
-      addEventListener('resize', resize);
-      resize();
-
-      // Particle system: glittery stardust in coral (+ tiny hue jitter)
-      const CORAL = { r: 209, g: 90, b: 67 };
-      const POOL_SIZE = 350;          // upper bound of particles
-      const particles = new Array(POOL_SIZE).fill(null).map(() => ({
-        x: 0, y: 0, vx: 0, vy: 0,
-        life: 0, ttl: 0, size: 0,
-        hueShift: 0, active: false
-      }));
-
-      let poolIndex = 0;
-
-      // Mouse tracking for instantaneous feel
-      let mx = innerWidth / 2, my = innerHeight / 2;
-      let pmx = mx, pmy = my;
-      let lastMove = performance.now();
-
-      addEventListener('mousemove', e => {
-        pmx = mx; pmy = my;
-        mx = e.clientX; my = e.clientY;
-        lastMove = performance.now();
-
-        // Speed-based emission: faster move → more glitter
-        const dx = mx - pmx, dy = my - pmy;
-        const speed = Math.hypot(dx, dy);
-        // 2..16 particles per event, scaled by speed
-        const count = Math.min(16, 2 + Math.floor(speed * 0.4));
-        spawnParticles(mx, my, dx, dy, count);
-      }, { passive: true });
-
-      addEventListener('mouseleave', () => { pmx = mx; pmy = my; });
-
-      function spawnParticles(x, y, dx, dy, n) {
-        const baseAngle = Math.atan2(dy, dx) || 0;
-        for (let i = 0; i < n; i++) {
-          const p = particles[poolIndex++ % POOL_SIZE];
-          p.x = x; p.y = y;
-
-          // Slight spray around movement direction for “galaxy” feel
-          const spread = 0.6; // radians
-          const ang = baseAngle + (Math.random() - 0.5) * spread;
-          const spd = 0.6 + Math.random() * 1.8;
-
-          p.vx = Math.cos(ang) * spd;
-          p.vy = Math.sin(ang) * spd;
-
-          p.size = 1.2 + Math.random() * 2.4; // small, crisp points
-          p.ttl = 280 + Math.random() * 520;  // 0.28s..0.8s
-          p.life = 0;
-          p.hueShift = (Math.random() - 0.5) * 10; // ±10 for subtle color variation
-          p.active = true;
-        }
-      }
-
-      // Add a faint ribbon under the glitter for continuity
-      const path = [];
-      const MAX_PATH = 22;
-
-      function addPathPoint(x, y) {
-        path.unshift({ x, y });
-        if (path.length > MAX_PATH) path.pop();
-      }
-
-      // Draw helpers
-      function drawParticle(p) {
-        const t = p.life / p.ttl;       // 0..1
-        const alpha = (1 - t) * 0.55;   // fade out
-        if (alpha <= 0) return;
-
-        // Slight color jitter around coral
-        const r = clamp(CORAL.r + p.hueShift, 0, 255);
-        const g = clamp(CORAL.g - p.hueShift * 0.6, 0, 255);
-        const b = clamp(CORAL.b - p.hueShift * 0.3, 0, 255);
-
-        // Radial gradient “glow”
-        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2.2);
-        grad.addColorStop(0, `rgba(${r},${g},${b},${alpha})`);
-        grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
-
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 2.2, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
-
-      // Animation loop: clear with slight alpha to create natural blending
-      let last = performance.now();
-      function frame(now) {
-        const dt = Math.min(40, now - last); // cap delta for stability
-        last = now;
-
-        // Gentle fade of entire canvas for motion persistence
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.fillStyle = 'rgba(255,255,255,0.12)'; // on white bg; tweak if you change bg
-        ctx.fillRect(0, 0, innerWidth, innerHeight);
-
-        // Maintain path for silky continuity
-        addPathPoint(mx, my);
-        if (path.length > 1) {
-          ctx.lineJoin = 'round';
-          ctx.lineCap = 'round';
-          ctx.globalCompositeOperation = 'multiply';
-          ctx.strokeStyle = 'rgba(209,90,67,0.10)';
-          ctx.lineWidth = 6;
-          ctx.beginPath();
-          ctx.moveTo(path[0].x, path[0].y);
-          for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
-          ctx.stroke();
-        }
-
-        // Glitter particles on top with additive blending
-        ctx.globalCompositeOperation = 'lighter';
-        for (const p of particles) {
-          if (!p.active) continue;
-          p.life += dt;
-          if (p.life >= p.ttl) { p.active = false; continue; }
-          p.x += p.vx * (dt / 16);
-          p.y += p.vy * (dt / 16);
-          // Slow down a touch for that floating feel
-          p.vx *= 0.985;
-          p.vy *= 0.985;
-          drawParticle(p);
-        }
-
-        requestAnimationFrame(frame);
-      }
-      requestAnimationFrame(frame);
-    })();
-  </script>
-</body>
-</html>
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+</script>
