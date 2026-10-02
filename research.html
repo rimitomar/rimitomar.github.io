@@ -58,19 +58,38 @@
     .back-link { border-top: 1px solid #ddd; padding-top: 2rem; margin-top: 4rem; }
     @media (max-width: 768px) { .container { padding: 2rem 1.25rem; } }
 
+    .research-section figure {
+        float: right;
+        width: 25%;
+        min-width: 150px;
+        margin: 0.5rem 0 1rem 1.5rem;
+    }
+
     .research-figure {
         display: block;
         width: 100%;
-        max-width: 650px;
         height: auto;
-        margin: 2rem auto;
     }
 
     .figure-caption {
-        text-align: center;
-        font-size: 0.85rem;
+        text-align: left;
+        font-size: 0.75rem;
         color: #777;
-        margin-bottom: 2rem;
+        line-height: 1.4;
+    }
+
+    .research-section::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    @media (max-width: 600px) {
+        .research-section figure {
+            float: none;
+            width: 75%;
+            margin: 1.5rem auto;
+        }
     }
   </style>
 </head>
@@ -130,7 +149,7 @@
   <!-- 2021 -->
   <section class="research-section">
     <h2>Variability and Randomness of the Instantaneous Firing Rate</h2>
-    <p class="research-question">What can the instantaneous firing rate reveal about neural activity that conventional interspike-interval statistics cannot</p>
+    <p class="research-question">What can the instantaneous firing rate reveal about neural activity that conventional interspike-interval statistics cannot? </p>
     <figure>
     <img
         src="firing_variability.png"
