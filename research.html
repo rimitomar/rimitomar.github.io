@@ -114,7 +114,7 @@
     >
     <figcaption class="figure-caption">
         Comparison of neuronal transfer functions
-        illustrating intrinsic firing-rate saturation.
+        illustrating intrinsic firing-rate saturation, and asymptotic voltage.
     </figcaption>
     </figure>
     <p>Many simplified neuronal models predict firing frequencies that increase indefinitely with stimulation, contrary to physiological observations. 
@@ -131,6 +131,18 @@
   <section class="research-section">
     <h2>Variability and Randomness of the Instantaneous Firing Rate</h2>
     <p class="research-question">What can the instantaneous firing rate reveal about neural activity that conventional interspike-interval statistics cannot</p>
+    <figure>
+    <img
+        src="firing_variability.png"
+        alt="Variability and randomness of instantaneous firing rates"
+        class="research-figure"
+    >
+    <figcaption class="figure-caption">
+        Illustration of length-biased interspike intervals
+        used to define the instantaneous firing rate
+        at an observation time independent of spike timing.
+    </figcaption>
+    </figure>
     <p>Neuronal variability is commonly characterized through interspike intervals, 
       but these statistics do not necessarily capture the variability and randomness of the instantaneous firing rate.</p>
     <p>Using stochastic models of neuronal spiking, we investigated the statistical distributions of instantaneous firing rates and characterized their variability and randomness using measures of dispersion and entropy. </p>
@@ -147,6 +159,18 @@
   <section class="research-section">
     <h2>Estimating Neural Firing Rates</h2>
     <p class="research-question">How do we extract time-varying neuronal firing rates from spike trains, and how do different estimation methods approach this problem?</p>
+    <figure>
+    <img
+        src="firing_estimation.png"
+        alt="Comparison of neuronal firing rate estimation methods"
+        class="research-figure"
+    >
+    <figcaption class="figure-caption">
+        Neuronal spike trains and a comparison of
+        time histogram and kernel smoothing methods
+        for estimating time-varying firing rates.
+    </figcaption>
+</figure>
     <p>Firing rate is a fundamental measure of neuronal activity, 
       yet estimating its temporal evolution from variable spike trains presents significant statistical challenges. 
       Traditional approaches often rely on averaging across repeated trials, potentially obscuring important temporal features of neuronal responses.</p>
