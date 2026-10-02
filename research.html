@@ -57,6 +57,21 @@
     .publication { margin-top: 1.5rem; font-size: 0.95rem; color: #4b6584; }
     .back-link { border-top: 1px solid #ddd; padding-top: 2rem; margin-top: 4rem; }
     @media (max-width: 768px) { .container { padding: 2rem 1.25rem; } }
+
+    .research-figure {
+        display: block;
+        width: 100%;
+        max-width: 650px;
+        height: auto;
+        margin: 2rem auto;
+    }
+
+    .figure-caption {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #777;
+        margin-bottom: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -90,6 +105,17 @@
   <section class="research-section">
     <h2>Biophysical Constraints on Neuronal Firing</h2>
     <p class="research-question">How do the biophysical properties of neurons constrain their firing rates?</p>
+    <figure>
+    <img
+        src="firing_saturation.png"
+        alt="Neuronal firing-rate saturation"
+        class="research-figure"
+    >
+    <figcaption class="figure-caption">
+        Comparison of neuronal transfer functions
+        illustrating intrinsic firing-rate saturation.
+    </figcaption>
+    </figure>
     <p>Many simplified neuronal models predict firing frequencies that increase indefinitely with stimulation, contrary to physiological observations. 
       We investigated whether intrinsic biophysical properties could account for firing-rate saturation without imposing an artificial refractory period. 
       <p>By comparing four integrate-and-fire models, we demonstrated that combining reversal potentials with dendrite–soma coupling naturally produces an upper bound on firing frequency. 
