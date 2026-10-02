@@ -1,34 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Research | Rimjhim Tomar</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Lato', sans-serif;
-      background: #ffffff;
-      margin: 0;
-      padding: 2rem;
-      color: #1e3a5f;
-    }
-    h1 {
-      text-align: center;
-    }
-    .back-link {
-      text-align: center;
-      margin-top: 2rem;
-    }
+    body { font-family: 'Lato', sans-serif; background: #ffffff; color: #1e3a5f; margin: 0; line-height: 1.7; }
+    .container { max-width: 850px; margin: 0 auto; padding: 4rem 2rem; }
+    h1 { font-size: 2.3rem; margin-bottom: 1rem; }
+    .introduction { margin-bottom: 4rem; color: #4b6584; }
+    .research-section { margin-bottom: 4.5rem; }
+    h2 { font-size: 1.5rem; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid #ddd; }
+    .research-question { font-size: 1.05rem; font-style: italic; color: #4b6584; margin-bottom: 1.5rem; }
+    p { margin-bottom: 1.2rem; }
+    a { color: #d15a43; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .publication { margin-top: 1.5rem; font-size: 0.95rem; color: #4b6584; }
+    .back-link { border-top: 1px solid #ddd; padding-top: 2rem; margin-top: 4rem; }
+    @media (max-width: 768px) { .container { padding: 2rem 1.25rem; } }
   </style>
 </head>
 <body>
-  <h1>Research Interests</h1>
-  <p style="max-width: 800px; margin: 2rem auto;">
-    Currently I am investigating neuromodulatory credit assignment in recurrent neural networks. Details to come soon! (this website is pretty much still under construction)
-  </p>
-  <div class="back-link">
-    <a href="index.html">← Back to Home</a>
-  </div>
+<main class="container">
+  <h1>Research</h1>
+  <p class="introduction">My research spans neural coding, neuronal dynamics, and biologically plausible learning. Broadly, I am interested in understanding how neural circuits process information and adapt through experience.</p>
+
+  <!-- CURRENT RESEARCH -->
+  <section class="research-section">
+    <h2>Biologically Plausible Credit Assignment</h2>
+    <p class="research-question">How do recurrent neural circuits assign credit and distribute learning signals without conventional backpropagation?</p>
+    <p>My current research investigates biologically plausible mechanisms of credit assignment in recurrent neural networks. Building on local learning rules, I am developing approaches to infer functional feedback pathways from neural activity, behavioral errors, and learning outcomes.</p>
+    <p>A central objective is to understand how neuromodulatory systems might implement these feedback signals. By integrating computational models, large-scale neural recordings, and neuromodulatory receptor expression data, this work aims to identify candidate mechanisms through which neuromodulators shape learning.</p>
+    <p class="publication"><em>Ongoing research</em></p>
+  </section>
+
+  <!-- 2022 -->
+  <section class="research-section">
+    <h2>Biophysical Constraints on Neuronal Firing</h2>
+    <p class="research-question">How do the biophysical properties of neurons constrain their firing rates?</p>
+    <p>Neuronal firing rates cannot increase indefinitely in response to external stimulation. We developed a simple neuronal model demonstrating how biophysical constraints, including reversal potentials and dendrite–soma coupling, can naturally produce saturation of the firing frequency.</p>
+    <p class="publication"><strong>Publication</strong><br>
+      Tomar, R., Smith, C. E. &amp; Lánský, P. (2022).
+      <a href="https://doi.org/10.1016/j.biosystems.2022.104780" target="_blank" rel="noopener noreferrer">A simple neuronal model with intrinsic saturation of the firing frequency.</a>
+      <em>BioSystems.</em>
+    </p>
+  </section>
+
+  <!-- 2021 -->
+  <section class="research-section">
+    <h2>Variability and Randomness of the Instantaneous Firing Rate</h2>
+    <p class="research-question">What can fluctuations in instantaneous firing rate reveal about the reliability of neural communication?</p>
+    <p>Neural spike trains exhibit considerable variability, but different statistical descriptions capture different aspects of this variability. We developed statistical measures of the variability and randomness of the instantaneous firing rate, examining how its statistical properties can reveal features of neuronal activity beyond conventional interspike-interval statistics.</p>
+    <p class="publication"><strong>Publication</strong><br>
+      Tomar, R. &amp; Košťál, L. (2021).
+      <a href="https://doi.org/10.3389/fncom.2021.620410" target="_blank" rel="noopener noreferrer">Variability and Randomness of the Instantaneous Firing Rate.</a>
+      <em>Frontiers in Computational Neuroscience.</em>
+    </p>
+  </section>
+
+  <!-- 2019 -->
+  <section class="research-section">
+    <h2>Estimating Neural Firing Rates</h2>
+    <p class="research-question">How can we reliably estimate the firing rate of a neuron from its spike activity?</p>
+    <p>The firing rate is one of the most widely used measures of neuronal activity, yet its estimation involves important methodological choices. In this work, I reviewed approaches to estimating neuronal firing rates, examining their assumptions, properties, and suitability for different experimental settings.</p>
+    <p class="publication"><strong>Publication</strong><br>
+      Tomar, R. (2019).
+      <a href="https://doi.org/10.1016/j.biosystems.2019.103980" target="_blank" rel="noopener noreferrer">Review: Methods of firing rate estimation.</a>
+      <em>BioSystems.</em>
+    </p>
+  </section>
+
+  <div class="back-link"><a href="index.html">← Back to Home</a></div>
+</main>
 </body>
 </html>
