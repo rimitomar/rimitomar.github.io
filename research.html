@@ -39,8 +39,10 @@
   <section class="research-section">
     <h2>Biophysical Constraints on Neuronal Firing</h2>
     <p class="research-question">How do the biophysical properties of neurons constrain their firing rates?</p>
-    <p>Neuronal firing rates cannot increase indefinitely in response to external stimulation. We developed a simple neuronal model demonstrating how biophysical constraints, including reversal potentials and dendrite–soma coupling, can naturally produce saturation of the firing frequency.</p>
-    <p class="publication"><strong>Publication</strong><br>
+    <p>Many simplified neuronal models predict firing frequencies that increase indefinitely with stimulation, contrary to physiological observations. 
+      We investigated whether intrinsic biophysical properties could account for firing-rate saturation without imposing an artificial refractory period. 
+      <p>By comparing four integrate-and-fire models, we demonstrated that combining reversal potentials with dendrite–soma coupling naturally produces an upper bound on firing frequency. 
+      Neither mechanism alone is sufficient, highlighting how neuronal morphology and membrane biophysics jointly shape neuronal input–output transformations. </p>
       Tomar, R., Smith, C. E. &amp; Lánský, P. (2022).
       <a href="https://doi.org/10.1016/j.biosystems.2022.104780" target="_blank" rel="noopener noreferrer">A simple neuronal model with intrinsic saturation of the firing frequency.</a>
       <em>BioSystems.</em>
@@ -50,8 +52,12 @@
   <!-- 2021 -->
   <section class="research-section">
     <h2>Variability and Randomness of the Instantaneous Firing Rate</h2>
-    <p class="research-question">What can fluctuations in instantaneous firing rate reveal about the reliability of neural communication?</p>
-    <p>Neural spike trains exhibit considerable variability, but different statistical descriptions capture different aspects of this variability. We developed statistical measures of the variability and randomness of the instantaneous firing rate, examining how its statistical properties can reveal features of neuronal activity beyond conventional interspike-interval statistics.</p>
+    <p class="research-question">What can the instantaneous firing rate reveal about neural activity that conventional interspike-interval statistics cannot</p>
+    <p>Neuronal variability is commonly characterized through interspike intervals, 
+      but these statistics do not necessarily capture the variability and randomness of the instantaneous firing rate.</p>
+    <p>Using stochastic models of neuronal spiking, we investigated the statistical distributions of instantaneous firing rates and characterized their variability and randomness using measures of dispersion and entropy. </p>
+    <p> We demonstrated that variability in interspike intervals does not translate straightforwardly into firing-rate variability. Moreover, increasing the randomness of spike timing can either increase or decrease the randomness of instantaneous firing rates, depending on the underlying neuronal model. 
+      Applying these measures to experimental recordings illustrated how instantaneous firing-rate analysis provides complementary information about neuronal activity.</p>
     <p class="publication"><strong>Publication</strong><br>
       Tomar, R. &amp; Košťál, L. (2021).
       <a href="https://doi.org/10.3389/fncom.2021.620410" target="_blank" rel="noopener noreferrer">Variability and Randomness of the Instantaneous Firing Rate.</a>
@@ -62,8 +68,12 @@
   <!-- 2019 -->
   <section class="research-section">
     <h2>Estimating Neural Firing Rates</h2>
-    <p class="research-question">How can we reliably estimate the firing rate of a neuron from its spike activity?</p>
-    <p>The firing rate is one of the most widely used measures of neuronal activity, yet its estimation involves important methodological choices. In this work, I reviewed approaches to estimating neuronal firing rates, examining their assumptions, properties, and suitability for different experimental settings.</p>
+    <p class="research-question">How do we extract time-varying neuronal firing rates from spike trains, and how do different estimation methods approach this problem?</p>
+    <p>Firing rate is a fundamental measure of neuronal activity, 
+      yet estimating its temporal evolution from variable spike trains presents significant statistical challenges. 
+      Traditional approaches often rely on averaging across repeated trials, potentially obscuring important temporal features of neuronal responses.</p>
+    <p>This review examines established methods of firing-rate estimation, from classical time histograms and kernel smoothing to more sophisticated adaptive and Bayesian approaches. 
+      It discusses their underlying statistical assumptions, methodological differences, and practical applications, providing an overview of the tools available for studying time-dependent neuronal activity.</p>
     <p class="publication"><strong>Publication</strong><br>
       Tomar, R. (2019).
       <a href="https://doi.org/10.1016/j.biosystems.2019.103980" target="_blank" rel="noopener noreferrer">Review: Methods of firing rate estimation.</a>
