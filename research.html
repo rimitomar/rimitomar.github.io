@@ -6,6 +6,44 @@
   <title>Research | Rimjhim Tomar</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
+        
+    header {
+        background: #ffffff;
+        color: #1e3a5f;
+        padding: 2rem 1rem;
+        text-align: center;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+
+    header p {
+        margin: 0.75rem 0 1.5rem;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem 2rem;
+    }
+
+    nav a {
+        color: #4b6584;
+        text-decoration: none;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+    }
+
+    nav a:hover,
+    nav a.active {
+        color: #d15a43;
+    }
+
     body { font-family: 'Lato', sans-serif; background: #ffffff; color: #1e3a5f; margin: 0; line-height: 1.7; }
     .container { max-width: 850px; margin: 0 auto; padding: 4rem 2rem; }
     h1 { font-size: 2.3rem; margin-bottom: 1rem; }
@@ -22,6 +60,19 @@
   </style>
 </head>
 <body>
+<header>
+    <h1>Rimjhim Tomar</h1>
+    <p>Computational Neuroscience | Mount Sinai</p>
+
+    <nav>
+        <a href="research.html" class="active">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="workshops.html">Workshops &amp; Conferences</a>
+        <a href="lit_review.html">Literature Review</a>
+        <a href="misc.html">Misc</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
 <main class="container">
   <h1>Research</h1>
   <p class="introduction">My research spans neural coding, neuronal dynamics, and biologically plausible learning. Broadly, I am interested in understanding how neural circuits process information and adapt through experience.</p>
